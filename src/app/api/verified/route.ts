@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
     const findings = data?.map(finding => ({
       id: finding.id,
       scanId: finding.scan_id,
-      domain: finding.scans?.domain || 'Unknown',
+      domain: (finding.scans as any)?.domain || 'Unknown',
       findingType: finding.type,
       severity: finding.severity,
       description: finding.description,
